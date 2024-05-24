@@ -2,6 +2,7 @@ package com.project.basketballstore.controller;
 
 import com.project.basketballstore.model.DTO.CartDTO;
 import com.project.basketballstore.model.shopping_cart.Cart;
+import com.project.basketballstore.model.shopping_cart.Item;
 import com.project.basketballstore.service.Cart.CartService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @RequestMapping("/cart")
@@ -21,7 +23,7 @@ public class CartController {
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<?> addToCart(@PathVariable int id, Principal principal){
+    public ResponseEntity<?> addItemToCart(@PathVariable int id, Principal principal){
        try {
            cartService.addToCart(id,principal);
        }catch (Exception e){
@@ -32,12 +34,12 @@ public class CartController {
 
     @GetMapping
     public ResponseEntity<?> viewCart(Principal principal){
-       cartService.viewCart(principal);
-        return ResponseEntity.ok("cart");
+        List<Item> itemList = cartService.showCart(principal);
+        return new ResponseEntity<>(itemList, HttpStatus.OK);
     }
 
     @PutMapping
-    public ResponseEntity<?> updatecart(){
+    public ResponseEntity<?> updateItemCart(){
         cartService.updateCart();
         return ResponseEntity.ok("Thành công !!!");
     }

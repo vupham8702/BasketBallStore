@@ -14,9 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.Principal;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 
 @Service
@@ -54,9 +52,10 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Cart viewCart(Principal principal) {
+    public List<Item> showCart(Principal principal) {
         Cart cart = checkCart(principal);
-        return cart;
+        Set<Item> items = cart.getItem();
+        return new ArrayList<>(items);
     }
 
     @Override

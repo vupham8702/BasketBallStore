@@ -47,7 +47,7 @@ public class WebSecurityConfig {
         http.authenticationProvider(authenticationProvider());
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**","/users/**","/news/**","/products/**","/cart/**").permitAll()
+                        .requestMatchers("/auth/**","/users/**","/news/**","/products/**").permitAll()
                         .anyRequest().authenticated())
                 .csrf(AbstractHttpConfigurer::disable)
                 .headers(h -> h.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
