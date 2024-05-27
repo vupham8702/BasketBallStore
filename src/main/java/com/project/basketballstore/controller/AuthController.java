@@ -2,8 +2,8 @@ package com.project.basketballstore.controller;
 
 import com.project.basketballstore.model.DTO.JwtResponseDTO;
 import com.project.basketballstore.model.DTO.UserDTO;
-import com.project.basketballstore.service.Jwt.JwtService;
-import com.project.basketballstore.service.Jwt.TokenBlacklist;
+import com.project.basketballstore.Jwt.JwtService;
+import com.project.basketballstore.Jwt.TokenBlacklist;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

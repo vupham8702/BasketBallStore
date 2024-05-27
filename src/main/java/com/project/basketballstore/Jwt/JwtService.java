@@ -1,4 +1,4 @@
-package com.project.basketballstore.service.Jwt;
+package com.project.basketballstore.Jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

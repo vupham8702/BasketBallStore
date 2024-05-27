@@ -1,4 +1,4 @@
-package com.project.basketballstore.service.Jwt;
+package com.project.basketballstore.Jwt;
 
 import org.springframework.stereotype.Service;
 

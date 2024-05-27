@@ -1,4 +1,4 @@
-package com.project.basketballstore.service.Jwt;
+package com.project.basketballstore.Jwt;
 
 import com.project.basketballstore.service.User.CustomUserServiceImpl;
 import jakarta.servlet.FilterChain;
