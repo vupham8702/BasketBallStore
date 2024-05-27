@@ -1,6 +1,6 @@
 package com.project.basketballstore.service.Impl;
 
-import com.project.basketballstore.model.DTO.CartDTO;
+import com.project.basketballstore.model.DTO.ItemDTO;
 import com.project.basketballstore.model.product.Product;
 import com.project.basketballstore.model.shopping_cart.Cart;
 import com.project.basketballstore.model.shopping_cart.Item;
@@ -42,9 +42,11 @@ public class CartServiceImpl implements CartService {
         };
         Product product = optionalProduct.get();
         Set<Item> items = cart.getItem();
+
         Item item = new Item();
         item.setQuantity(1);
-        item.setProductId(product.getId());
+        item.setProduct(product);
+
         item = itemRepository.save(item);
         items.add(item);
         cart.setItem(items);
@@ -55,13 +57,34 @@ public class CartServiceImpl implements CartService {
     public List<Item> showCart(Principal principal) {
         Cart cart = checkCart(principal);
         Set<Item> items = cart.getItem();
+
         return new ArrayList<>(items);
     }
 
     @Override
-    public Cart updateCart() {
+    public Item updateCart(int id, ItemDTO itemDTO) {
+        Optional<Item> itemOptional = itemRepository.findById(id);
+        if (itemOptional.isEmpty()){
+            throw new RuntimeException("sản phẩm không khả dụng !!!");
+        }
+        Item item = itemOptional.get();
+        item.setQuantity(itemDTO.getQuantity());
+        return  itemRepository.save(item);
+    }
 
-        return null;
+    @Override
+    @Transactional
+    public void removeItem(int id,Principal principal) {
+        Optional<Item> itemOptional = itemRepository.findById(id);
+        if (itemOptional.isEmpty()){
+            throw new RuntimeException("sản phẩm không khả dụng !!!");
+        }
+        Item item = itemOptional.get();
+        Cart cart = checkCart(principal);
+        Set<Item> items = cart.getItem();
+        items.remove(item);
+        cartRepository.save(cart);
+        itemRepository.deleteById(id);
     }
 
     public Cart checkCart(Principal principal) {

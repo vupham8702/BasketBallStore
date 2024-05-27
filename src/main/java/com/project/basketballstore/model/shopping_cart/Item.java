@@ -22,15 +22,16 @@ public class Item  {
     @Column(name = "quantity")
     private int quantity;
 
-    @Column(name = "product_id")
-    private int productId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private Product product;
 
     @Override
     public String toString() {
         return "Item{" +
                 "id=" + id +
                 ", quantity=" + quantity +
-                ", productId=" + productId +
+                ", product=" + product +
                 '}';
     }
 }

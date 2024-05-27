@@ -49,12 +49,15 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "image_id"))
     private Set<ImageModel> productImage  ;
 
+    @OneToOne(mappedBy = "product")
+    @JsonIgnore
+    private Item item;
+
     @ManyToOne()
     @JoinColumn(name = "user_id")
     @JsonBackReference
     @JsonIgnore
     private User user;
-
 
     @Override
     public String toString() {
@@ -66,6 +69,7 @@ public class Product {
                 ", inventory=" + inventory +
                 ", size=" + size +
                 ", productImage=" + productImage +
+                ", item=" + item +
                 ", user=" + user +
                 '}';
     }
