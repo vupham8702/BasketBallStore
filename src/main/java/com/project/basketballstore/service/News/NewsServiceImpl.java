@@ -1,4 +1,4 @@
-package com.project.basketballstore.service.Impl;
+package com.project.basketballstore.service.News;
 
 import com.project.basketballstore.model.DTO.NewsDTO;
 import com.project.basketballstore.model.image.ImageModel;

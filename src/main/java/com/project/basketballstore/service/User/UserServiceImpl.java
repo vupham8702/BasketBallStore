@@ -1,4 +1,4 @@
-package com.project.basketballstore.service.Impl;
+package com.project.basketballstore.service.User;
 
 import com.project.basketballstore.model.user.User;
 import com.project.basketballstore.repository.RoleRepository;

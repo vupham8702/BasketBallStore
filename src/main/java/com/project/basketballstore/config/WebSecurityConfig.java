@@ -1,6 +1,6 @@
 package com.project.basketballstore.config;
 
-import com.project.basketballstore.service.Impl.CustomUserServiceImpl;
+import com.project.basketballstore.service.User.CustomUserServiceImpl;
 import com.project.basketballstore.service.Jwt.JwtAuthFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

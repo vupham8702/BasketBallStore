@@ -1,6 +1,6 @@
 package com.project.basketballstore.service.Jwt;
 
-import com.project.basketballstore.service.Impl.CustomUserServiceImpl;
+import com.project.basketballstore.service.User.CustomUserServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
