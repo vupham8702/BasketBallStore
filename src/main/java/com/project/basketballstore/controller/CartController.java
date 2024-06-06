@@ -38,7 +38,7 @@ public class CartController {
 
     @GetMapping
     public ResponseEntity<?> viewCart(Principal principal){
-        List<Item> itemList = cartService.showCart(principal);
+        List<Item> itemList = cartService.showCart(principal );
         return new ResponseEntity<>(itemList, HttpStatus.OK);
     }
 
